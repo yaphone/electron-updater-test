@@ -56,7 +56,6 @@ app.on('activate', () => {
     createWindow()
   }
 })
-
 /**
  * Auto Updater
  *
