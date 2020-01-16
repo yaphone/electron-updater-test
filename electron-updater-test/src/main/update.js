@@ -17,7 +17,7 @@ class Update {
   }
 
   Message(type, data) {
-    this.mainWindow.webContents.send('message', type, data)
+    this.mainWindow.webContents.send('updateMsg', type, data)
   }
 
   error() { // 当更新发生错误的时候触发
@@ -46,17 +46,21 @@ class Update {
 
   listen() { // 下载监听
     autoUpdater.on('download-progress', () => {
-      this.Message('downloading...')
+      this.Message(3)
     })
   }
 
   download() { // 下载完成
     autoUpdater.on('update-downloaded', () => {
       this.Message(6)
-      setTimeout(() => {
-        autoUpdater.quitAndInstall()
-      }, 1000)
+      // setTimeout(() => {
+      //   autoUpdater.quitAndInstall()
+      // }, 1000)
     })
+  }
+
+  startdate() {
+    autoUpdater.quitAndInstall()
   }
 
   load() { // 触发器

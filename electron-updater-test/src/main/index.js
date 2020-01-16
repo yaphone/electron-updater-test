@@ -36,10 +36,14 @@ function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
-  const update = new Update(mainWindow)
+  const updater = new Update(mainWindow)
   ipcMain.on('checkUpdate', () => {
     // 检查更新
-    update.load()
+    updater.load()
+  })
+  ipcMain.on('updateStart', () => {
+    // 开始升级
+    updater.startdate()
   })
 }
 
