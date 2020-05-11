@@ -49,36 +49,38 @@ export default {
     }
   },
   mounted() {
-    ipcRenderer.on('updateMsg', (type, data) => {
-      switch (data) {
-        case 0:
-          this.updateIinfo = '正在检查更新'
-          break
-        case 1:
-          this.updateIinfo = '检测到新版本，准备下载'
-          break
-        case 2:
-          this.updateIinfo = '未检测到新版本'
-          break
-        case 3:
-          this.updateIinfo = '下载中'
-          break
-        case 4:
-          this.updateIinfo = '下载暂停'
-          break
-        case 5:
-          this.updateIinfo = '下载暂停恢复'
-          break
-        case 6:
-          this.updateIinfo = '下载完成'
-          break
-        case 7:
-          this.updateIinfo = '下载失败'
-          break
-        case 8:
-          this.updateIinfo = '取消下载'
-          break
-      }
+    ipcRenderer.on('updateMsg', (event, data) => {
+      console.log('=========data=========' + JSON.stringify(data) + '===========')
+      this.updateIinfo = data
+      // switch (data) {
+      //   case 0:
+      //     this.updateIinfo = '正在检查更新'
+      //     break
+      //   case 1:
+      //     this.updateIinfo = '检测到新版本，准备下载'
+      //     break
+      //   case 2:
+      //     this.updateIinfo = '未检测到新版本'
+      //     break
+      //   case 3:
+      //     this.updateIinfo = '下载中'
+      //     break
+      //   case 4:
+      //     this.updateIinfo = '下载暂停'
+      //     break
+      //   case 5:
+      //     this.updateIinfo = '下载暂停恢复'
+      //     break
+      //   case 6:
+      //     this.updateIinfo = '下载完成'
+      //     break
+      //   case 7:
+      //     this.updateIinfo = '下载失败'
+      //     break
+      //   case 8:
+      //     this.updateIinfo = '取消下载'
+      //     break
+      // }
     })
   },
   methods: {

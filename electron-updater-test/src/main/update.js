@@ -16,43 +16,48 @@ class Update {
     this.download()
   }
 
-  Message(type, data) {
-    this.mainWindow.webContents.send('updateMsg', type, data)
+  sendMsg(data) {
+    console.log('=======' + data + '=========')
+    this.mainWindow.webContents.send('updateMsg', data)
   }
 
   error() { // 当更新发生错误的时候触发
-    autoUpdater.on('error', (err) => {
-      this.Message(-1, err)
+    autoUpdater.on('error', () => {
+      this.sendMsg(-1)
     })
   }
 
   start() { // 当开始检查更新的时候触发
     autoUpdater.on('checking-for-update', () => {
-      this.Message(0)
+      this.sendMsg(0)
     })
   }
 
   allow() { // 发现可更新数据时
     autoUpdater.on('update-available', () => {
-      this.Message(1)
+      this.sendMsg(1)
     })
   }
 
   unallowed() { // 没有可更新数据时
     autoUpdater.on('update-not-avaliable', () => {
-      this.Message(2)
+      this.sendMsg(2)
     })
   }
 
   listen() { // 下载监听
-    autoUpdater.on('download-progress', () => {
-      this.Message(3)
+    autoUpdater.on('download-progress', (progressObj) => {
+      let log_message = 'Download speed: ' + progressObj.bytesPerSecond
+      log_message = log_message + ' - Downloaded ' + progressObj.percent + '%'
+      log_message = log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')'
+      console.log(log_message)
+      this.sendMsg(log_message)
     })
   }
 
   download() { // 下载完成
     autoUpdater.on('update-downloaded', () => {
-      this.Message(6)
+      this.sendMsg(6)
       // setTimeout(() => {
       //   autoUpdater.quitAndInstall()
       // }, 1000)
