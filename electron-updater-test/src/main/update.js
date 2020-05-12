@@ -7,7 +7,7 @@ class Update {
   mainWindow
   constructor(mainWindow) {
     this.mainWindow = mainWindow
-    autoUpdater.setFeedURL('http://118.24.195.28:7777/file/version')
+    autoUpdater.setFeedURL('http://127.0.0.1/file/version')
     this.error()
     this.start()
     this.allow()
