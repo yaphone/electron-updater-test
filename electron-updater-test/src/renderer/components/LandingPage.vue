@@ -50,7 +50,6 @@ export default {
   },
   mounted() {
     ipcRenderer.on('updateMsg', (event, data) => {
-      console.log('=========data=========' + JSON.stringify(data) + '===========')
       this.updateIinfo = data
       // switch (data) {
       //   case 0:

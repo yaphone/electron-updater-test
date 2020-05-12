@@ -17,7 +17,6 @@ class Update {
   }
 
   sendMsg(data) {
-    console.log('=======' + data + '=========')
     this.mainWindow.webContents.send('updateMsg', data)
   }
 
@@ -29,19 +28,19 @@ class Update {
 
   start() { // 当开始检查更新的时候触发
     autoUpdater.on('checking-for-update', () => {
-      this.sendMsg(0)
+      this.sendMsg('升级检查')
     })
   }
 
   allow() { // 发现可更新数据时
     autoUpdater.on('update-available', () => {
-      this.sendMsg(1)
+      this.sendMsg('有可用更新')
     })
   }
 
   unallowed() { // 没有可更新数据时
     autoUpdater.on('update-not-avaliable', () => {
-      this.sendMsg(2)
+      this.sendMsg('当前已是最新版本')
     })
   }
 
@@ -57,7 +56,7 @@ class Update {
 
   download() { // 下载完成
     autoUpdater.on('update-downloaded', () => {
-      this.sendMsg(6)
+      this.sendMsg('下载完成')
       // setTimeout(() => {
       //   autoUpdater.quitAndInstall()
       // }, 1000)
