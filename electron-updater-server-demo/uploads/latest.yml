@@ -1,8 +1,8 @@
 version: 0.0.2
 files:
-  - url: http://127.0.0.1/file/version/electron-updater-test Setup 0.0.2.exe
+  - url: http://118.24.195.28:9000/hewuqi/electron-updater-test-0.0.2.exe
     sha512: BnlZOBoWtTgMCihQv38nS+xsVPldn8oVUVvGD6z2mqQjnHpZn9MsMR3wilE8ywmSOh3g8FNAA47xNGxLqEZUSg==
     size: 37403366
-path: electron-updater-test Setup 0.0.2.exe
+path: electron-updater-test-0.0.2.exe
 sha512: BnlZOBoWtTgMCihQv38nS+xsVPldn8oVUVvGD6z2mqQjnHpZn9MsMR3wilE8ywmSOh3g8FNAA47xNGxLqEZUSg==
 releaseDate: '2020-01-08T12:24:34.783Z'
